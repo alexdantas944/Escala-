@@ -5,22 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultor de CEP</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
-    <h1>Consultor de CEP</h1>
-    <div>
-        <label for="cep">Buscar endereço pelo CEP:</label>
-        <input type="text" id="cep" placeholder="Digite o CEP">
-        <button onclick="buscarCep()">Buscar</button>
-        <p id="resultadoCep"></p>
-    </div>
-    <div>
-        <label for="logradouro">Buscar CEP pelo nome da rua:</label>
-        <input type="text" id="logradouro" placeholder="Digite o nome da rua">
-        <button onclick="buscarLogradouro()">Buscar</button>
-        <p id="resultadoLogradouro"></p>
+    <div class="container">
+        <h1>Consultor de CEP</h1>
+        
+        <div>
+            <label for="cep">Buscar endereço pelo CEP:</label>
+            <input type="text" id="cep" placeholder="Digite o CEP">
+            <button onclick="buscarCep()">Buscar</button>
+            <p id="resultadoCep"></p>
+        </div>
+
+        <div>
+            <label for="logradouro">Buscar CEP pelo nome da rua:</label>
+            <input type="text" id="logradouro" placeholder="Digite o nome da rua">
+            <button onclick="buscarLogradouro()">Buscar</button>
+            <p id="resultadoLogradouro"></p>
+        </div>
     </div>
 
     <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(() => console.log('Service Worker registrado!'))
+                .catch(error => console.error('Erro ao registrar Service Worker:', error));
+        }
+    </script>
 </body>
 </html>
