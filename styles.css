@@ -1,0 +1,48 @@
+body {
+    background-color: #001f3f;
+    color: #dfff00;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 0;
+}
+
+header {
+    padding: 10px;
+}
+
+button {
+    background-color: #dfff00;
+    color: #001f3f;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Calendário */
+#calendario {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+    padding: 20px;
+}
+
+/* Dia do calendário */
+.dia {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Folgas destacadas */
+.folga {
+    background-color: #00ff00;
+    color: #001f3f;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    #calendario {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+}
