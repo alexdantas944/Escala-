@@ -19,44 +19,67 @@ async function salvarHistoricoIndexedDB(cep, endereco) {
     store.put({ cep, endereco, data: new Date().toLocaleString() });
 }
 
-async function exibirHistorico() {
-    let db = await abrirDB();
-    let transacao = db.transaction("historico", "readonly");
-    let store = transacao.objectStore("historico");
+function buscarCep() {
+    let cep = document.getElementById("cep").value.trim();
+    if (!cep || cep.length !== 8 || isNaN(cep)) {
+        document.getElementById("resultadoCep").innerText = "CEP inválido! Digite 8 números.";
+        return;
+    }
 
-    let request = store.getAll();
-    request.onsuccess = function() {
-        let resultado = request.result;
-        let historicoHtml = "<h3>Histórico de Consultas</h3><ul>";
-
-        resultado.forEach(item => {
-            historicoHtml += `<li>${item.cep} - ${item.endereco} (${item.data})</li>`;
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then(response => {
+            if (!response.ok) throw new Error("Erro na requisição!");
+            return response.json();
+        })
+        .then(data => {
+            if (data.erro) {
+                document.getElementById("resultadoCep").innerText = "CEP não encontrado!";
+            } else {
+                let endereco = `${data.logradouro}, ${data.bairro}, ${data.localidade} - ${data.uf}`;
+                document.getElementById("resultadoCep").innerText = `Endereço: ${endereco}`;
+                salvarHistoricoIndexedDB(cep, endereco);
+            }
+        })
+        .catch(error => {
+            console.error("Erro ao buscar CEP:", error);
+            document.getElementById("resultadoCep").innerText = "Erro ao buscar CEP. Tente novamente!";
         });
-
-        historicoHtml += "</ul>";
-        document.getElementById("historico").innerHTML = historicoHtml;
-    };
 }
 
-async function limparHistorico() {
-    let db = await abrirDB();
-    let transacao = db.transaction("historico", "readwrite");
-    let store = transacao.objectStore("historico");
-    store.clear();
-    document.getElementById("historico").innerHTML = "<p>Histórico limpo!</p>";
+function buscarLogradouro() {
+    let logradouro = document.getElementById("logradouro").value.trim();
+    let uf = "CE";
+    let cidade = "Fortaleza";
+
+    if (!logradouro) {
+        document.getElementById("resultadoLogradouro").innerText = "Digite um nome de rua válido!";
+        return;
+    }
+
+    fetch(`https://viacep.com.br/ws/${uf}/${cidade}/${logradouro}/json/`)
+        .then(response => {
+            if (!response.ok) throw new Error("Erro na requisição!");
+            return response.json();
+        })
+        .then(data => {
+            if (!data || data.length === 0) {
+                document.getElementById("resultadoLogradouro").innerText = "Endereço não encontrado!";
+            } else {
+                let cepEncontrado = data[0].cep;
+                document.getElementById("resultadoLogradouro").innerText = `CEP encontrado: ${cepEncontrado}`;
+            }
+        })
+        .catch(error => {
+            console.error("Erro ao buscar Logradouro:", error);
+            document.getElementById("resultadoLogradouro").innerText = "Erro na busca. Tente novamente!";
+        });
 }
 
 function alternarModo() {
     document.body.classList.toggle("dark-mode");
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const btnModo = document.createElement("button");
-    btnModo.innerText = "Alternar Modo";
-    btnModo.classList.add("toggle-mode");
-    btnModo.onclick = alternarModo;
-    document.body.appendChild(btnModo);
-});
+document.getElementById("modoEscuro").addEventListener("click", alternarModo);
 
 function iniciarReconhecimentoVoz() {
     let reconhecimento = new webkitSpeechRecognition() || new SpeechRecognition();
@@ -68,10 +91,3 @@ function iniciarReconhecimentoVoz() {
     };
     reconhecimento.start();
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    const btnVoz = document.createElement("button");
-    btnVoz.innerText = "🎤 Falar CEP";
-    btnVoz.onclick = iniciarReconhecimentoVoz;
-    document.body.appendChild(btnVoz);
-});
