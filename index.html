@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <h1>Consultor de CEP</h1>
-        
+
         <div>
             <label for="cep">Buscar endereço pelo CEP:</label>
             <input type="text" id="cep" placeholder="Digite o CEP">
@@ -24,6 +24,10 @@
             <button onclick="buscarLogradouro()">Buscar</button>
             <p id="resultadoLogradouro"></p>
         </div>
+
+        <div id="historico"></div>
+        <button onclick="exibirHistorico()">Mostrar Histórico</button>
+        <button onclick="limparHistorico()">Limpar Histórico</button>
     </div>
 
     <script src="script.js"></script>
