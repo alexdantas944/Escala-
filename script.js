@@ -14,8 +14,8 @@ function buscarCep() {
 
 function buscarLogradouro() {
     let logradouro = document.getElementById("logradouro").value;
-    let uf = "CE"; // Estado fixo (pode ser modificado para tornar mais dinâmico)
-    let cidade = "Fortaleza"; // Cidade fixa (também pode ser modificada)
+    let uf = "CE"; 
+    let cidade = "Fortaleza";
     
     fetch(`https://viacep.com.br/ws/${uf}/${cidade}/${logradouro}/json/`)
         .then(response => response.json())
