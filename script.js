@@ -1,4 +1,3 @@
-// Inicializa o banco de dados IndexedDB
 let db;
 const request = indexedDB.open("EscalaDB", 1);
 
@@ -15,18 +14,28 @@ request.onerror = function(event) {
     console.error("Erro ao abrir IndexedDB:", event.target.error);
 };
 
-// Função para cadastrar usuários
-function cadastrarUsuario(cpf, senha, nome, escala) {
+// Cadastro de usuário
+function cadastrarUsuario() {
+    let nome = document.getElementById("cadastroNome").value;
+    let cpf = document.getElementById("cadastroCPF").value;
+    let senha = document.getElementById("cadastroSenha").value;
+
+    if (!nome || !cpf || !senha) {
+        alert("Preencha todos os campos!");
+        return;
+    }
+
     const transaction = db.transaction(["usuarios"], "readwrite");
     const store = transaction.objectStore("usuarios");
-    store.add({ cpf, senha, nome, escala });
+    store.add({ cpf, senha, nome, escala: ["Seg", "Ter", "Qua", "Qui", "Sex", "Folga"] });
+
     alert("Usuário cadastrado com sucesso!");
 }
 
-// Função de login
+// Login
 function login() {
-    let cpf = document.getElementById("cpf").value;
-    let senha = document.getElementById("senha").value;
+    let cpf = document.getElementById("loginCPF").value;
+    let senha = document.getElementById("loginSenha").value;
 
     const transaction = db.transaction(["usuarios"], "readonly");
     const store = transaction.objectStore("usuarios");
@@ -43,14 +52,8 @@ function login() {
     };
 }
 
-// Atualiza o painel de folga
+// Atualiza painel de folga
 function atualizarPainel(usuario) {
     let listaFolga = document.getElementById("listaFolga");
     listaFolga.innerHTML = `<li>${usuario.nome} está de folga</li>`;
 }
-
-// Exemplo de cadastro inicial (remova isso e substitua com um formulário real)
-setTimeout(() => {
-    cadastrarUsuario("12345678900", "123456", "João", ["Seg", "Ter", "Qua", "Qui", "Sex", "Folga"]);
-    cadastrarUsuario("98765432100", "987654", "Maria", ["Qua", "Qui", "Sex", "Sáb", "Dom", "Folga"]);
-}, 1000);
