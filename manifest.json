@@ -2,7 +2,7 @@
     "name": "Calendário de Folgas",
     "short_name": "Folgas",
     "description": "Um calendário automático de folgas baseado em uma escala 5x1.",
-    "start_url": "index.html",
+    "start_url": "/index.html",
     "display": "standalone",
     "orientation": "portrait",
     "theme_color": "#007BFF",
