@@ -1,29 +1,32 @@
+:root {
+    --cor-primaria: #002f6c;
+    --cor-secundaria: red;
+    --cor-texto: white;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background: #002f6c; /* Azul escuro */
-    color: white;
+    background: var(--cor-primaria);
+    color: var(--cor-texto);
     text-align: center;
 }
 
 header {
-    background: red;
+    background: var(--cor-secundaria);
     padding: 20px;
-    font-size: 20px;
-}
-
-main {
-    margin-top: 20px;
-}
-
-input, button {
-    margin: 10px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
 }
 
 button {
+    margin: 10px;
+    padding: 10px;
     background: white;
-    color: black;
+    border: none;
     font-weight: bold;
+    cursor: pointer;
+}
+
+.dark-mode {
+    --cor-primaria: #333;
+    --cor-secundaria: #444;
+    --cor-texto: #ddd;
 }
