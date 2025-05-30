@@ -1,38 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESCALA PGM51</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Calendário Interativo de Escala</title>
 </head>
 <body>
-    <header>
-        <h1>ESCALA PGM51</h1>
-        <p id="entregadorFolga">Entregador de folga: <span id="nomeFolga">---</span></p>
-        <button onclick="alternarTema()">Alternar Tema</button>
-    </header>
+    <div class="container mt-5">
+        <h1 class="text-center">Calendário de Escala de Trabalho</h1>
+        <div class="form-group">
+            <label for="lastOffDate">Data da Última Folga:</label>
+            <input type="date" id="lastOffDate" class="form-control">
+        </div>
+        <button class="btn btn-primary" id="generateSchedule">Gerar Escala</button>
+        <div id="schedule" class="mt-4"></div>
+    </div>
 
-    <main>
-        <section>
-            <h2>Calendário de Folgas</h2>
-            <div id="calendario"></div>
-        </section>
-
-        <section>
-            <h2>Cadastro</h2>
-            <input type="email" id="email" placeholder="Seu email">
-            <input type="text" id="nome" placeholder="Nome do entregador">
-            <input type="date" id="ultimaFolga">
-            <button onclick="cadastrarUsuario()">Cadastrar</button>
-        </section>
-
-        <section>
-            <button onclick="exportarCSV()">Exportar CSV</button>
-            <button onclick="exportarPDF()">Exportar PDF</button>
-        </section>
-    </main>
+    <script src="app.js"></script>
 </body>
 </html>
