@@ -15,6 +15,16 @@ h1 {
     padding: 20px;
 }
 
+.month {
+    margin-bottom: 20px;
+}
+
+.month h2 {
+    background: #007BFF;
+    color: white;
+    padding: 10px;
+}
+
 .day {
     padding: 10px;
     background: #ffffff;
