@@ -12,19 +12,26 @@
     <header>
         <h1>ESCALA PGM51</h1>
         <p id="entregadorFolga">Entregador de folga: <span id="nomeFolga">---</span></p>
+        <button onclick="alternarTema()">Alternar Tema</button>
     </header>
-    
+
     <main>
         <section>
             <h2>Calendário de Folgas</h2>
             <div id="calendario"></div>
         </section>
-        
+
         <section>
-            <h2>Cadastro de Usuário</h2>
+            <h2>Cadastro</h2>
+            <input type="email" id="email" placeholder="Seu email">
             <input type="text" id="nome" placeholder="Nome do entregador">
             <input type="date" id="ultimaFolga">
             <button onclick="cadastrarUsuario()">Cadastrar</button>
+        </section>
+
+        <section>
+            <button onclick="exportarCSV()">Exportar CSV</button>
+            <button onclick="exportarPDF()">Exportar PDF</button>
         </section>
     </main>
 </body>
