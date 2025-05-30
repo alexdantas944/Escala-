@@ -1,25 +1,39 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const calendar = document.getElementById("calendar");
-    let lastDayOff = new Date(localStorage.getItem("lastDayOff")) || new Date("2025-05-23");
-    const year = lastDayOff.getFullYear();
+    const lastDayInput = document.getElementById("lastDayOff");
+    lastDayInput.value = localStorage.getItem("lastDayOff") || "2025-05-23";
+    updateCalendar();
+});
 
+function updateCalendar() {
+    const calendar = document.getElementById("calendar");
+    calendar.innerHTML = "";
+    
+    let lastDayOff = new Date(document.getElementById("lastDayOff").value);
+    localStorage.setItem("lastDayOff", lastDayOff.toISOString());
+
+    const year = lastDayOff.getFullYear();
     let currentDate = new Date(year, 0, 1);
     let count = 0;
 
-    while (currentDate.getFullYear() === year) {
-        const dayElement = document.createElement("div");
-        dayElement.classList.add("day");
-        dayElement.textContent = currentDate.toLocaleDateString();
+    for (let month = 0; month < 12; month++) {
+        const monthContainer = document.createElement("div");
+        monthContainer.classList.add("month");
+        monthContainer.innerHTML = `<h2>${currentDate.toLocaleString("pt-BR", { month: "long" })}</h2>`;
 
-        if (count % 6 === 5) {
-            dayElement.classList.add("holiday");
-            lastDayOff = currentDate;
+        while (currentDate.getMonth() === month) {
+            const dayElement = document.createElement("div");
+            dayElement.classList.add("day");
+            dayElement.textContent = currentDate.toLocaleDateString();
+
+            if (count % 6 === 5) {
+                dayElement.classList.add("holiday");
+            }
+
+            monthContainer.appendChild(dayElement);
+            currentDate.setDate(currentDate.getDate() + 1);
+            count++;
         }
 
-        calendar.appendChild(dayElement);
-        currentDate.setDate(currentDate.getDate() + 1);
-        count++;
+        calendar.appendChild(monthContainer);
     }
-
-    localStorage.setItem("lastDayOff", lastDayOff.toISOString());
-});
+}
