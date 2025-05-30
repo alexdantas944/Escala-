@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Calendário Interativo de Escala</title>
+    <title>Escala de Trabalho 5x1</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Calendário de Escala de Trabalho</h1>
-        <div class="form-group">
-            <label for="lastOffDate">Data da Última Folga:</label>
-            <input type="date" id="lastOffDate" class="form-control">
-        </div>
-        <button class="btn btn-primary" id="generateSchedule">Gerar Escala</button>
-        <div id="schedule" class="mt-4"></div>
+        <h1 class="text-center">Calendário de Escala 5x1</h1>
+        <label for="ultimaFolga">Última Folga:</label>
+        <input type="date" id="ultimaFolga" class="form-control" onchange="atualizarEscala()">
+        <h2 class="mt-4">Próximas folgas:</h2>
+        <ul id="listaFolgas" class="list-group"></ul>
     </div>
 
     <script src="app.js"></script>
