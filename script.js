@@ -375,23 +375,30 @@ console.log('🚚 Sistema v3.0 carregado com as cores azul, vermelho e branco!')
 // Registrar Service Worker para PWA
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
+        navigator.serviceWorker.register('./sw.js', {
+            scope: './'
+        })
             .then((registration) => {
                 console.log('✅ Service Worker registrado com sucesso:', registration.scope);
                 
                 // Verificar se há atualizações
                 registration.addEventListener('updatefound', () => {
                     const newWorker = registration.installing;
-                    newWorker.addEventListener('statechange', () => {
-                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                            console.log('🔄 Nova versão disponível');
-                            sistema.mostrarNotificacao('Nova versão disponível! Recarregue a página.', 'info');
-                        }
-                    });
+                    if (newWorker) {
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                console.log('🔄 Nova versão disponível');
+                                if (window.sistema) {
+                                    sistema.mostrarNotificacao('Nova versão disponível! Recarregue a página.', 'info');
+                                }
+                            }
+                        });
+                    }
                 });
             })
             .catch((error) => {
                 console.error('❌ Falha ao registrar Service Worker:', error);
+                console.error('Detalhes do erro:', error.message);
             });
     });
 }
