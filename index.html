@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Império do Salgado</title>
+  <style>
+    :root {
+      --cor-fundo: #7a0f0f;
+      --cor-dourado: #d4af37;
+      --cor-branco: #fff;
+    }* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-branco);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--cor-fundo);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header img {
+  height: 60px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--cor-dourado);
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--cor-branco);
+}
+
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1601050690296-7e19b43fb8fd') center/cover;
+  color: var(--cor-branco);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: var(--cor-dourado);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 3rem 2rem;
+}
+
+.card {
+  background-color: #fff2;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 1rem 0 0.5rem;
+  color: var(--cor-dourado);
+}
+
+.card p {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #5a0b0b;
+  color: var(--cor-branco);
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  margin: 0.5rem 0;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  background-color: var(--cor-dourado);
+  color: var(--cor-fundo);
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #ffd700;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.svg" alt="Logo Império do Salgado">
+    <nav>
+      <ul>
+        <li><a href="#home">Início</a></li>
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>  <section class="hero" id="home">
+    <h1>Bem-vindo ao Império do Salgado</h1>
+    <p>Os melhores salgados da região, feitos com qualidade e sabor incomparável.</p>
+    <a href="#produtos" class="btn">Ver Cardápio</a>
+  </section>  <section class="produtos" id="produtos">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1627308595184-4700b5a1f69d" alt="Coxinha">
+      <h3>Coxinha</h3>
+      <p>A clássica e irresistível rainha dos salgados.</p>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1617196033361-5b99e2c6f1a8" alt="Bolinha de Queijo">
+      <h3>Bolinha de Queijo</h3>
+      <p>Uma explosão de sabor a cada mordida.</p>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1608032363047-1e6a056ba6ab" alt="Kibe">
+      <h3>Kibe</h3>
+      <p>Tradicional e crocante, perfeito para qualquer ocasião.</p>
+    </div>
+  </section>  <footer id="contato">
+    <p>© 2025 Império do Salgado - Todos os direitos reservados</p>
+  </footer>  <script>
+    // Efeito simples de rolagem suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script></body>
+</html>
