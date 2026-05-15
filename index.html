@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ============================================================
+         META TAGS AVANÇADAS (PARA O WHATSAPP FICAR TOP)
+         ============================================================ -->
+    <title>Alex Dantas | Motoboy High-Tech Fortaleza</title>
+    <meta name="title" content="Alex Dantas | Motoboy High-Tech Fortaleza">
+    <meta name="description" content="🚀 Entregas rápidas e seguras em Fortaleza. Status: DISPONÍVEL 🟢">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://motoboy-dm82.onrender.com/">
+    <meta property="og:title" content="⚡ Alex Dantas - Motoboy Profissional">
+    <meta property="og:description" content="Status: DISPONÍVEL 🟢 | Entregas a partir de R$15. Agilidade e confiança em toda Fortaleza.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/alexdantas944/Escala-/refs/heads/main/foto-motoboy.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Alex Dantas Entregas">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://motoboy-dm82.onrender.com/">
+    <meta property="twitter:title" content="Alex Dantas | Motoboy High-Tech">
+    <meta property="twitter:description" content="Solicite sua entrega agora com o Alex. Rapidez e segurança sobre duas rodas.">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/alexdantas944/Escala-/refs/heads/main/foto-motoboy.jpg">
+
+    <!-- Configurações de Cor do Navegador (Mobile) -->
+    <meta name="theme-color" content="#0a0b10">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Favicon (Ícone da aba) -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/alexdantas944/Escala-/refs/heads/main/foto-motoboy.jpg">
+
+    <style>
+        :root {
+            --neon-blue: #00d2ff;
+            --neon-green: #39ff14;
+            --dark-bg: #0a0b10;
+            --card-bg: #161b22;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-bg);
+            background-image: radial-gradient(circle at 50% 50%, #1a1f35 0%, #0a0b10 100%);
+            color: white;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .phone-container {
+            width: 100%;
+            max-width: 400px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0, 210, 255, 0.2);
+            padding-bottom: 20px;
+            margin: 20px;
+        }
+
+        /* Header e Imagem de Perfil */
+        .header {
+            text-align: center;
+            padding-top: 40px;
+            background: linear-gradient(to bottom, rgba(0, 210, 255, 0.1), transparent);
+        }
+
+        .profile-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        /* Badge de Status Piscante */
+        .status-badge {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--neon-green);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .pulse {
+            width: 10px;
+            height: 10px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-green);
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        .name-section h1 {
+            margin: 10px 0 5px;
+            font-size: 28px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .name-section p {
+            color: #8b949e;
+            margin: 0;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 10px;
+            border-bottom: 1px solid var(--glass);
+            font-size: 12px;
+            color: #8b949e;
+        }
+
+        .tab.active {
+            color: var(--neon-blue);
+            border-bottom: 2px solid var(--neon-blue);
+            padding-bottom: 5px;
+        }
+
+        /* Serviços */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .service-card {
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 15px 5px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--neon-blue);
+            background: rgba(0, 210, 255, 0.05);
+        }
+
+        .service-card span {
+            font-size: 10px;
+            color: #ccc;
+        }
+
+        /* Mapa Simulado */
+        .map-box {
+            margin: 0 20px;
+            height: 120px;
+            background: url('https://user-images.githubusercontent.com/13101511/57181057-07409200-6ec5-11e9-906f-f463c64c76b9.png');
+            background-size: cover;
+            border-radius: 15px;
+            position: relative;
+            border: 1px solid var(--glass);
+        }
+
+        .map-overlay {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 11px;
+        }
+
+        /* Botão WhatsApp */
+        .cta-container {
+            padding: 20px;
+        }
+
+        .main-btn {
+            background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3);
+            transition: 0.3s;
+        }
+
+        .main-btn:active {
+            transform: scale(0.95);
+        }
+
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            font-size: 10px;
+            color: #8b949e;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-container">
+        <div class="header">
+            <div class="profile-wrapper">
+                <img src="https://raw.githubusercontent.com/alexdantas944/Escala-/refs/heads/main/foto-motoboy.jpg" class="profile-img" alt="Alex Dantas">
+            </div>
+            
+            <div class="status-badge">
+                <div class="pulse"></div>
+                <span style="color: var(--neon-green); font-weight: bold; font-size: 12px;">STATUS: DISPONÍVEL</span>
+            </div>
+
+            <div class="name-section">
+                <h1>Alex Dantas</h1>
+                <p>MOTOBOY PROFISSIONAL</p>
+                <div style="font-size: 10px; color: var(--neon-blue); margin-top: 5px;">📍 FORTALEZA / CE</div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active">SERVIÇOS</div>
+            <div class="tab">AVALIAÇÕES</div>
+            <div class="tab">HISTÓRICO</div>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div style="font-size: 20px;">📦</div>
+                <span style="font-weight: bold; color: white;">EXPRESS</span><br>
+                <span>A partir R$15</span>
+            </div>
+            <div class="service-card">
+                <div style="font-size: 20px;">🛡️</div>
+                <span style="font-weight: bold; color: white;">SEGURO</span><br>
+                <span>Logística</span>
+            </div>
+            <div class="service-card">
+                <div style="font-size: 20px;">📄</div>
+                <span style="font-weight: bold; color: white;">DOCS</span><br>
+                <span>Urgente</span>
+            </div>
+        </div>
+
+        <div class="map-box">
+            <div class="map-overlay">Alex está online em <b>Fortaleza</b></div>
+        </div>
+
+        <div class="cta-container">
+            <a href="https://wa.me/5585994530854?text=Olá%20Alex,%20preciso%20de%20um%20motoboy%20agora!" class="main-btn">
+                <span>SOLICITAR AGORA</span>
+                <span style="font-size: 24px;">🚀</span>
+            </a>
+        </div>
+
+        <div class="bottom-nav">
+            <div>CHAMADA</div>
+            <div>CHAT</div>
+            <div>COMPARTILHAR</div>
+        </div>
+    </div>
+
+</body>
+</html>
